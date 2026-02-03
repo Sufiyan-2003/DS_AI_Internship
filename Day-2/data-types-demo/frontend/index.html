@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 5px;
+            border: 1px solid #c8e6c9;
+        }
+        .data-types {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 5px;
+            border: 1px solid #bbdefb;
+        }
+        .data-types h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        code {
+            background: #f1f1f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profile Card Generator</h1>
+        
+        <div class="form-group">
+            <label for="itemName">Item Name:</label>
+            <input type="text" id="itemName" placeholder="Enter item name" value="Laptop">
+        </div>
+        
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" placeholder="Enter quantity" value="2" min="1">
+        </div>
+        
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" placeholder="Enter price" value="499.99" step="0.01" min="0">
+        </div>
+        
+        <div class="form-group">
+            <label for="inStock">In Stock:</label>
+            <select id="inStock">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        
+        <button onclick="generateProfile()">Generate Profile Card</button>
+        
+        <div class="result" id="result" style="display: none;">
+            <h3>Receipt:</h3>
+            <div id="receiptOutput"></div>
+            <h3>Total Cost:</h3>
+            <div id="totalCostOutput"></div>
+        </div>
+        
+        <div class="data-types" id="dataTypes" style="display: none;">
+            <h3>Data Types Used:</h3>
+            <div id="typesOutput"></div>
+        </div>
+    </div>
+    
+    <script>
+        function generateProfile() {
+            // Get user inputs
+            const itemName = document.getElementById('itemName').value;
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const price = parseFloat(document.getElementById('price').value);
+            const inStock = document.getElementById('inStock').value === 'true';
+            
+            // Calculate total cost
+            const totalCost = quantity * price;
+            
+            // Create formatted string (simulating Python's comma separated print)
+            const formattedString = `Item: ${itemName}, Qty: ${quantity}, Price: ${price.toFixed(2)}, Available: ${inStock}`;
+            
+            // Display results
+            document.getElementById('receiptOutput').textContent = formattedString;
+            document.getElementById('totalCostOutput').textContent = `$${totalCost.toFixed(2)}`;
+            document.getElementById('result').style.display = 'block';
+            
+            // Show data types
+            document.getElementById('typesOutput').innerHTML = `
+                <p><strong>item_name:</strong> <code>${typeof itemName}</code> (String)</p>
+                <p><strong>quantity:</strong> <code>${typeof quantity}</code> (Integer)</p>
+                <p><strong>price:</strong> <code>${typeof price}</code> (Float)</p>
+                <p><strong>in_stock:</strong> <code>${typeof inStock}</code> (Boolean)</p>
+                <p><strong>total_cost:</strong> <code>${typeof totalCost}</code> (Float)</p>
+            `;
+            document.getElementById('dataTypes').style.display = 'block';
+        }
+        
+        // Run on page load with default values
+        window.onload = generateProfile;
+    </script>
+</body>
+</html>

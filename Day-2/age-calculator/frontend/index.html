@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age in 2030 Calculator</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+header i {
+    margin-right: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+@media (min-width: 768px) {
+    .card {
+        flex-direction: row;
+        gap: 30px;
+    }
+}
+
+.input-section, .result-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    color: #2575fc;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+h2 i {
+    margin-right: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #6a11cb;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(37, 117, 252, 0.4);
+}
+
+button i {
+    margin-right: 10px;
+}
+
+.result-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+#result-text {
+    font-size: 1.4rem;
+    color: #2575fc;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.year-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.year {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+}
+
+.year-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6a11cb;
+}
+
+.year-age {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #2575fc;
+    margin-top: 5px;
+}
+
+.arrow {
+    margin: 0 25px;
+    font-size: 2.5rem;
+    color: #6a11cb;
+}
+
+.hidden {
+    display: none;
+}
+
+.explanation {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #f0f7ff;
+    border-radius: 15px;
+}
+
+.explanation h3 {
+    color: #2575fc;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+.explanation p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.formula {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #6a11cb;
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: #333;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+    color: #666;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer code {
+    background-color: #e9ecef;
+    padding: 3px 6px;
+    border-radius: 4px;
+    color: #d63384;
+}
+
+.python-link {
+    margin-top: 15px;
+}
+
+.python-link a {
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+
+.python-link a:hover {
+    color: #6a11cb;
+    text-decoration: underline;
+}
+
+.python-link i {
+    color: #ffd43b;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> Age in 2030 Calculator</h1>
+            <p class="subtitle">A simple bot that tells you how old you'll be in 2030</p>
+        </header>
+        
+        <main>
+            <div class="card">
+                <div class="input-section">
+                    <h2><i class="fas fa-user"></i> Your Information</h2>
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Current Age:</label>
+                        <input type="number" id="age" placeholder="Enter your age" min="0" max="120">
+                    </div>
+                    <button id="calculate-btn">
+                        <i class="fas fa-calculator"></i> Calculate Age in 2030
+                    </button>
+                </div>
+                
+                <div class="result-section hidden" id="result-section">
+                    <h2><i class="fas fa-birthday-cake"></i> Your Result</h2>
+                    <div class="result-box">
+                        <p id="result-text"></p>
+                        <div class="year-display">
+                            <div class="year">
+                                <span class="year-label">2026</span>
+                                <span class="year-age" id="current-age">--</span>
+                            </div>
+                            <div class="arrow">
+                                <i class="fas fa-long-arrow-alt-right"></i>
+                            </div>
+                            <div class="year">
+                                <span class="year-label">2030</span>
+                                <span class="year-age" id="future-age">--</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="reset-btn">
+                        <i class="fas fa-redo"></i> Calculate Again
+                    </button>
+                </div>
+            </div>
+            
+            <div class="explanation">
+                <h3><i class="fas fa-info-circle"></i> How It Works</h3>
+                <p>This calculator assumes the current year is <strong>2026</strong>. To find your age in 2030, we simply add 4 years to your current age.</p>
+                <div class="formula">
+                    <code>Age in 2030 = Current Age + (2030 - 2026)</code>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Python Concepts Practiced: <code>input()</code>, Type Casting (<code>int()</code>), Basic Addition</p>
+            <p class="python-link">
+                <i class="fas fa-code"></i> 
+                <a href="../backend.py" download>Download Python Script</a>
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Get DOM elements
+    const nameInput = document.getElementById('name');
+    const ageInput = document.getElementById('age');
+    const calculateBtn = document.getElementById('calculate-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultSection = document.getElementById('result-section');
+    const resultText = document.getElementById('result-text');
+    const currentAgeSpan = document.getElementById('current-age');
+    const futureAgeSpan = document.getElementById('future-age');
+    
+    // Current year assumption (as per the instructions)
+    const CURRENT_YEAR = 2026;
+    const FUTURE_YEAR = 2030;
+    
+    // Calculate button click handler
+    calculateBtn.addEventListener('click', function() {
+        // Get input values
+        const name = nameInput.value.trim();
+        const ageStr = ageInput.value.trim();
+        
+        // Validate inputs
+        if (!name) {
+            alert('Please enter your name.');
+            nameInput.focus();
+            return;
+        }
+        
+        if (!ageStr) {
+            alert('Please enter your current age.');
+            ageInput.focus();
+            return;
+        }
+        
+        // Convert age to integer (type casting)
+        const currentAge = parseInt(ageStr);
+        
+        // Validate age
+        if (isNaN(currentAge)) {
+            alert('Please enter a valid number for age.');
+            ageInput.focus();
+            return;
+        }
+        
+        if (currentAge < 0 || currentAge > 120) {
+            alert('Please enter a reasonable age (0-120).');
+            ageInput.focus();
+            return;
+        }
+        
+        // Calculate age in 2030 (assuming current year is 2026)
+        const ageIn2030 = currentAge + (FUTURE_YEAR - CURRENT_YEAR);
+        
+        // Display the result
+        resultText.textContent = `Hey ${name}, you will be ${ageIn2030} years old in ${FUTURE_YEAR}!`;
+        currentAgeSpan.textContent = currentAge;
+        futureAgeSpan.textContent = ageIn2030;
+        
+        // Show result section
+        resultSection.classList.remove('hidden');
+        
+        // Scroll to result
+        resultSection.scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    // Reset button click handler
+    resetBtn.addEventListener('click', function() {
+        // Clear inputs
+        nameInput.value = '';
+        ageInput.value = '';
+        
+        // Hide result section
+        resultSection.classList.add('hidden');
+        
+        // Focus on name input
+        nameInput.focus();
+    });
+    
+    // Allow Enter key to trigger calculation
+    nameInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            calculateBtn.click();
+        }
+    });
+    
+    ageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            calculateBtn.click();
+        }
+    });
+    
+    // Initialize with a sample (optional)
+    nameInput.value = "Alex";
+    ageInput.value = "25";
+});
+    </script>
+</body>
+</html>

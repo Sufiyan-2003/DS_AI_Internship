@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Bill Splitter</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background-color: rgba(255, 255, 255, 0.97);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(to right, #ff6b6b, #ff8e53);
+    color: white;
+    padding: 25px 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+header i {
+    margin-right: 15px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+@media (min-width: 900px) {
+    .card {
+        flex-direction: row;
+        gap: 30px;
+    }
+}
+
+.input-section, .result-section {
+    flex: 1;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    color: #ff6b6b;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+h2 i {
+    margin-right: 10px;
+    color: #ff8e53;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 1.05rem;
+}
+
+label i {
+    margin-right: 8px;
+    color: #ff6b6b;
+}
+
+input {
+    width: 100%;
+    padding: 14px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    transition: all 0.3s;
+    background-color: white;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ff8e53;
+    box-shadow: 0 0 0 3px rgba(255, 142, 83, 0.2);
+}
+
+.hint {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 6px;
+    font-style: italic;
+}
+
+.tip-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tip-btn {
+    padding: 10px 5px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tip-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #ff8e53;
+}
+
+.tip-btn.active {
+    background-color: #ff6b6b;
+    color: white;
+    border-color: #ff6b6b;
+}
+
+.custom-tip {
+    display: flex;
+    align-items: center;
+}
+
+.custom-tip input {
+    flex: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.custom-tip span {
+    background-color: #ff8e53;
+    color: white;
+    padding: 14px 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-weight: 500;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(to right, #ff6b6b, #ff8e53);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(255, 107, 107, 0.4);
+}
+
+button i {
+    margin-right: 10px;
+}
+
+#reset-btn {
+    background: linear-gradient(to right, #36d1dc, #5b86e5);
+}
+
+.summary-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row.total {
+    border-top: 2px solid #ff6b6b;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ff6b6b;
+}
+
+.summary-label {
+    color: #555;
+}
+
+.summary-value {
+    font-weight: 600;
+    color: #333;
+}
+
+.result-box {
+    background: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(91, 134, 229, 0.3);
+}
+
+.result-header {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.result-header i {
+    margin-right: 10px;
+}
+
+.result-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.type-info {
+    margin: 25px 0;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.type-info h3 {
+    color: #36d1dc;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.type-info h3 i {
+    margin-right: 10px;
+}
+
+.type-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.type-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.type-row:last-child {
+    border-bottom: none;
+}
+
+.type-row span {
+    color: #555;
+}
+
+.type-row code {
+    background-color: #f0f7ff;
+    padding: 5px 12px;
+    border-radius: 6px;
+    color: #5b86e5;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.explanation {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #f0f7ff;
+    border-radius: 15px;
+}
+
+.explanation h3 {
+    color: #5b86e5;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+.explanation p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.calculation {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.formula {
+    background-color: #2d3436;
+    color: #dfe6e9;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.step-number {
+    background-color: #ff6b6b;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.step-text {
+    color: #555;
+}
+
+.python-example {
+    margin-top: 25px;
+    background-color: #2d3436;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.python-example h4 {
+    background-color: #ffd43b;
+    color: #333;
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+.python-example h4 i {
+    margin-right: 10px;
+    color: #306998;
+}
+
+.python-example pre {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.python-example code {
+    color: #dfe6e9;
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+    color: #666;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer code {
+    background-color: #e9ecef;
+    padding: 3px 6px;
+    border-radius: 4px;
+    color: #d63384;
+    font-weight: 500;
+}
+
+.python-link {
+    margin-top: 15px;
+}
+
+.python-link a {
+    color: #5b86e5;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+
+.python-link a:hover {
+    color: #ff6b6b;
+    text-decoration: underline;
+}
+
+.python-link i {
+    color: #ffd43b;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-utensils"></i> Restaurant Bill Splitter</h1>
+            <p class="subtitle">Split your bill evenly among friends</p>
+        </header>
+        
+        <main>
+            <div class="card">
+                <div class="input-section">
+                    <h2><i class="fas fa-receipt"></i> Bill Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="bill">
+                            <i class="fas fa-dollar-sign"></i> Total Bill Amount (₹)
+                        </label>
+                        <input type="number" id="bill" placeholder="45.50" min="0.01" step="0.01" value="75.50">
+                        <div class="hint">Enter amount with decimals if needed</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="people">
+                            <i class="fas fa-users"></i> Number of People
+                        </label>
+                        <input type="number" id="people" placeholder="4" min="1" value="4">
+                        <div class="hint">How many people are splitting the bill?</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tip">
+                            <i class="fas fa-hand-holding-usd"></i> Tip Percentage (Optional)
+                        </label>
+                        <div class="tip-selector">
+                            <button class="tip-btn" data-tip="0">No Tip</button>
+                            <button class="tip-btn" data-tip="10">10%</button>
+                            <button class="tip-btn" data-tip="15">15%</button>
+                            <button class="tip-btn" data-tip="18">18%</button>
+                            <button class="tip-btn" data-tip="20">20%</button>
+                            <button class="tip-btn" data-tip="25">25%</button>
+                        </div>
+                        <div class="custom-tip">
+                            <input type="number" id="tip" placeholder="Custom %" min="0" step="0.1" value="15">
+                            <span>%</span>
+                        </div>
+                    </div>
+                    
+                    <button id="calculate-btn">
+                        <i class="fas fa-calculator"></i> Split the Bill
+                    </button>
+                </div>
+                
+                <div class="result-section" id="result-section">
+                    <h2><i class="fas fa-money-bill-wave"></i> Split Summary</h2>
+                    
+                    <div class="summary-box">
+                        <div class="summary-row">
+                            <span class="summary-label">Total Bill:</span>
+                            <span class="summary-value" id="total-bill">₹75.50</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Tip Amount:</span>
+                            <span class="summary-value" id="tip-amount">₹11.33</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span class="summary-label">Total with Tip:</span>
+                            <span class="summary-value" id="total-with-tip">₹86.83</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Number of People:</span>
+                            <span class="summary-value" id="people-count">4</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="result-header">
+                            <i class="fas fa-user-friends"></i> Each Person Pays
+                        </div>
+                        <div class="result-amount" id="share-per-person">₹21.71</div>
+                    </div>
+                    
+                    <div class="type-info">
+                        <h3><i class="fas fa-code"></i> Data Type Information</h3>
+                        <div class="type-details">
+                            <div class="type-row">
+                                <span>Bill Amount Type:</span>
+                                <code id="bill-type">float</code>
+                            </div>
+                            <div class="type-row">
+                                <span>People Count Type:</span>
+                                <code id="people-type">int</code>
+                            </div>
+                            <div class="type-row">
+                                <span>Share Type:</span>
+                                <code id="share-type">float</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="reset-btn">
+                        <i class="fas fa-redo"></i> Calculate New Bill
+                    </button>
+                </div>
+            </div>
+            
+            <div class="explanation">
+                <h3><i class="fas fa-info-circle"></i> How It Works</h3>
+                <p>This calculator demonstrates <strong>floats and division</strong> in programming:</p>
+                
+                <div class="calculation">
+                    <div class="formula">
+                        <code>share_per_person = total_bill / num_people</code>
+                    </div>
+                    
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Total bill is stored as a <code>float</code> to handle decimals</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Number of people is stored as an <code>int</code> (whole number)</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Division returns a <code>float</code> result, even when dividing by an integer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="python-example">
+                    <h4><i class="fab fa-python"></i> Python Code Example</h4>
+                    <pre><code># Get inputs and convert to appropriate types
+total_bill = float(input("Enter total bill: "))
+num_people = int(input("Enter number of people: "))
+
+# Calculate share (division operation)
+share_per_person = total_bill / num_people
+
+# Print result
+print(f"Each person pays: ₹{share_per_person:.2f}")</code></pre>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Python Concepts Practiced: <code>float()</code>, Division (<code>/</code>), Type Checking</p>
+            <p class="python-link">
+                <i class="fas fa-download"></i> 
+                <a href="../backend.py" download>Download Python Script</a>
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Get DOM elements
+    const billInput = document.getElementById('bill');
+    const peopleInput = document.getElementById('people');
+    const tipInput = document.getElementById('tip');
+    const calculateBtn = document.getElementById('calculate-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    
+    // Result display elements
+    const totalBillEl = document.getElementById('total-bill');
+    const tipAmountEl = document.getElementById('tip-amount');
+    const totalWithTipEl = document.getElementById('total-with-tip');
+    const peopleCountEl = document.getElementById('people-count');
+    const sharePerPersonEl = document.getElementById('share-per-person');
+    
+    // Data type display elements
+    const billTypeEl = document.getElementById('bill-type');
+    const peopleTypeEl = document.getElementById('people-type');
+    const shareTypeEl = document.getElementById('share-type');
+    
+    // Tip buttons
+    const tipButtons = document.querySelectorAll('.tip-btn');
+    
+    // Set default tip button as active
+    tipButtons[3].classList.add('active'); // 18% button
+    
+    // Tip button click handler
+    tipButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            tipButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Update tip input
+            const tipValue = this.getAttribute('data-tip');
+            tipInput.value = tipValue;
+            
+            // Recalculate if values are present
+            if (billInput.value && peopleInput.value) {
+                calculateBill();
+            }
+        });
+    });
+    
+    // Tip input change handler
+    tipInput.addEventListener('input', function() {
+        // Remove active class from all tip buttons when custom value is entered
+        tipButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Recalculate if values are present
+        if (billInput.value && peopleInput.value) {
+            calculateBill();
+        }
+    });
+    
+    // Calculate button click handler
+    calculateBtn.addEventListener('click', calculateBill);
+    
+    // Reset button click handler
+    resetBtn.addEventListener('click', function() {
+        billInput.value = '75.50';
+        peopleInput.value = '4';
+        tipInput.value = '15';
+        
+        // Set 15% tip button as active
+        tipButtons.forEach(btn => btn.classList.remove('active'));
+        tipButtons[2].classList.add('active'); // 15% button
+        
+        calculateBill();
+    });
+    
+    // Real-time calculation when inputs change
+    billInput.addEventListener('input', function() {
+        if (billInput.value && peopleInput.value) {
+            calculateBill();
+        }
+    });
+    
+    peopleInput.addEventListener('input', function() {
+        if (billInput.value && peopleInput.value) {
+            calculateBill();
+        }
+    });
+    
+    // Calculate bill function
+    function calculateBill() {
+        // Get input values
+        const billStr = billInput.value.trim();
+        const peopleStr = peopleInput.value.trim();
+        const tipStr = tipInput.value.trim();
+        
+        // Validate inputs
+        if (!billStr || !peopleStr) {
+            return;
+        }
+        
+        // Convert to appropriate types
+        const totalBill = parseFloat(billStr);  // Float for decimal values
+        const numPeople = parseInt(peopleStr);  // Integer for whole number
+        const tipPercent = tipStr ? parseFloat(tipStr) : 0;
+        
+        // Validate conversions
+        if (isNaN(totalBill) || totalBill <= 0) {
+            alert('Please enter a valid bill amount greater than 0.');
+            billInput.focus();
+            return;
+        }
+        
+        if (isNaN(numPeople) || numPeople <= 0) {
+            alert('Please enter a valid number of people greater than 0.');
+            peopleInput.focus();
+            return;
+        }
+        
+        // Calculate tip amount
+        const tipAmount = totalBill * (tipPercent / 100);
+        const totalWithTip = totalBill + tipAmount;
+        
+        // Calculate share per person (division operation)
+        const sharePerPerson = totalWithTip / numPeople;
+        
+        // Update display with formatted values
+        totalBillEl.textContent = `₹₹{totalBill.toFixed(2)}`;
+        tipAmountEl.textContent = `₹₹{tipAmount.toFixed(2)}`;
+        totalWithTipEl.textContent = `₹₹{totalWithTip.toFixed(2)}`;
+        peopleCountEl.textContent = numPeople;
+        sharePerPersonEl.textContent = `₹₹{sharePerPerson.toFixed(2)}`;
+        
+        // Update data type information
+        updateTypeInfo(totalBill, numPeople, sharePerPerson);
+    }
+    
+    // Update data type information
+    function updateTypeInfo(bill, people, share) {
+        // Get actual JavaScript types
+        const billType = typeof bill;
+        const peopleType = typeof people;
+        const shareType = typeof share;
+        
+        // Map to Python type names for educational purposes
+        const typeMap = {
+            'number': bill === Math.floor(bill) ? 'int' : 'float',
+            'string': 'str',
+            'boolean': 'bool',
+            'object': 'object'
+        };
+        
+        // For educational purposes, show what Python would use
+        billTypeEl.textContent = 'float';
+        peopleTypeEl.textContent = 'int';
+        shareTypeEl.textContent = 'float';
+        
+        // Also show the actual JavaScript types in console
+        console.log('Data Types in JavaScript:');
+        console.log(`Bill amount (₹{bill}): ₹{typeof bill}`);
+        console.log(`Number of people (₹{people}): ₹{typeof people}`);
+        console.log(`Share per person (₹{share}): ₹{typeof share}`);
+        console.log(`In Python, these would be: float, int, float`);
+    }
+    
+    // Initialize calculation on page load
+    calculateBill();
+    
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && (document.activeElement === billInput || 
+                                  document.activeElement === peopleInput || 
+                                  document.activeElement === tipInput)) {
+            calculateBill();
+        }
+        
+        if (e.key === 'Escape') {
+            resetBtn.click();
+        }
+    });
+    
+    // Add a visual effect when calculating
+    calculateBtn.addEventListener('click', function() {
+        this.classList.add('calculating');
+        setTimeout(() => {
+            this.classList.remove('calculating');
+        }, 300);
+    });
+});
+    </script>
+</body>
+</html>

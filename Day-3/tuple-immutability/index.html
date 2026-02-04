@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuple Immutability Demo</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e6e6e6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(25, 25, 35, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 100%);
+    padding: 25px 30px;
+    text-align: center;
+    border-bottom: 3px solid #00adb5;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #00adb5;
+}
+
+header .subtitle {
+    font-size: 1.1rem;
+    color: #b8b8b8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content {
+    padding: 30px;
+}
+
+h2 {
+    color: #00adb5;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2d4059;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h3 {
+    color: #eeeeee;
+    margin: 15px 0 10px;
+}
+
+.explanation {
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.example-card {
+    background-color: #2d4059;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 5px solid #00adb5;
+}
+
+.code-display {
+    background-color: #1a1a2e;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    border: 1px solid #393e46;
+    overflow-x: auto;
+}
+
+.interactive-section {
+    background-color: rgba(45, 64, 89, 0.3);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.demo-card {
+    background-color: #222831;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.input-group input {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px 15px;
+    background-color: #393e46;
+    border: 2px solid #2d4059;
+    border-radius: 6px;
+    color: #eeeeee;
+    font-size: 1rem;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #00adb5;
+}
+
+button {
+    background-color: #00adb5;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.result-display {
+    background-color: #1a1a2e;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    min-height: 80px;
+    border: 1px solid #393e46;
+}
+
+.result-display p {
+    margin: 0;
+}
+
+.comparison {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed #393e46;
+}
+
+.output-section {
+    margin-top: 30px;
+}
+
+.console {
+    background-color: #1a1a2e;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 15px;
+    border: 1px solid #393e46;
+}
+
+.console-header {
+    background-color: #0f3460;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.console-content {
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    max-height: 300px;
+    overflow-y: auto;
+    line-height: 1.5;
+}
+
+.console-content p {
+    margin: 5px 0;
+    color: #4fc3f7;
+}
+
+.key-points {
+    background-color: #2d4059;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.key-points ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.key-points li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+}
+
+.key-points li:before {
+    content: "✓";
+    color: #00adb5;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0f3460;
+    color: #b8b8b8;
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .input-group input, button {
+        width: 100%;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-lock"></i> Tuple Immutability Demo</h1>
+            <p class="subtitle">Understanding why tuples cannot be changed in Python</p>
+        </header>
+        
+        <div class="content">
+            <div class="explanation">
+                <h2><i class="fas fa-info-circle"></i> Concept Explanation</h2>
+                <p>In Python, a <strong>tuple</strong> is an immutable data type. This means once a tuple is created, its elements cannot be modified, added, or removed.</p>
+                <p>This is useful when you want to ensure data integrity - like game settings that shouldn't change during gameplay.</p>
+                
+                <div class="example-card">
+                    <h3><i class="fas fa-gamepad"></i> Game Resolution Example</h3>
+                    <p>Imagine you're setting up the screen resolution for a game. This setting should not change during gameplay.</p>
+                    <div class="code-display">
+                        <code>screen_res = (1920, 1080)</code>
+                    </div>
+                    <p>If you try to change it: <code>screen_res[0] = 1280</code></p>
+                    <p>You'll get a <strong>TypeError</strong> because tuples are immutable!</p>
+                </div>
+            </div>
+            
+            <div class="interactive-section">
+                <h2><i class="fas fa-play-circle"></i> Interactive Demo</h2>
+                
+                <div class="demo-card">
+                    <h3>Create Your Own Tuple</h3>
+                    <p>Enter values for a tuple (comma-separated):</p>
+                    <div class="input-group">
+                        <input type="text" id="tuple-input" placeholder="e.g., 1920, 1080, 'Fullscreen'">
+                        <button id="create-tuple-btn"><i class="fas fa-plus"></i> Create Tuple</button>
+                    </div>
+                    
+                    <div class="result-display" id="tuple-display">
+                        <p>Your tuple will appear here</p>
+                    </div>
+                    
+                    <h3>Try to Modify the Tuple</h3>
+                    <p>Select an index to change and enter a new value:</p>
+                    <div class="input-group">
+                        <input type="number" id="index-input" placeholder="Index (0, 1, 2...)" min="0" max="10">
+                        <input type="text" id="value-input" placeholder="New value">
+                        <button id="modify-btn"><i class="fas fa-edit"></i> Try to Modify</button>
+                    </div>
+                    
+                    <div class="result-display" id="modify-result">
+                        <p>Result of modification attempt will appear here</p>
+                    </div>
+                    
+                    <div class="comparison">
+                        <h3><i class="fas fa-balance-scale"></i> Tuple vs List</h3>
+                        <p>Try the same operation with a list to see the difference!</p>
+                        <button id="list-demo-btn"><i class="fas fa-list"></i> Compare with List</button>
+                        <div class="result-display" id="list-result">
+                            <p>List modification result will appear here</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="output-section">
+                    <h3><i class="fas fa-terminal"></i> Python Output Simulation</h3>
+                    <div class="console" id="console-output">
+                        <div class="console-header">
+                            <span>Python Output</span>
+                            <button id="clear-console"><i class="fas fa-trash"></i> Clear</button>
+                        </div>
+                        <div class="console-content" id="console-content">
+                            <p>> Tuple Immutability Demonstration</p>
+                            <p>> Current Resolution: 1920x1080</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-points">
+                <h2><i class="fas fa-key"></i> Key Points</h2>
+                <ul>
+                    <li><strong>Tuples are immutable</strong> - cannot be changed after creation</li>
+                    <li><strong>Lists are mutable</strong> - can be modified after creation</li>
+                    <li>Use tuples for data that shouldn't change (constants, configurations)</li>
+                    <li>Use lists for data that needs to be modified</li>
+                    <li>Tuples can be used as dictionary keys (lists cannot)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Tuple Immutability Demo | Created to illustrate Python concepts</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Elements
+    const tupleInput = document.getElementById('tuple-input');
+    const createTupleBtn = document.getElementById('create-tuple-btn');
+    const tupleDisplay = document.getElementById('tuple-display');
+    const indexInput = document.getElementById('index-input');
+    const valueInput = document.getElementById('value-input');
+    const modifyBtn = document.getElementById('modify-btn');
+    const modifyResult = document.getElementById('modify-result');
+    const listDemoBtn = document.getElementById('list-demo-btn');
+    const listResult = document.getElementById('list-result');
+    const consoleContent = document.getElementById('console-content');
+    const clearConsoleBtn = document.getElementById('clear-console');
+    
+    // Global variables
+    let currentTuple = null;
+    let currentList = null;
+    
+    // Initialize with default tuple
+    initializeDefaultTuple();
+    
+    // Create tuple from user input
+    createTupleBtn.addEventListener('click', function() {
+        const input = tupleInput.value.trim();
+        
+        if (!input) {
+            alert("Please enter values for the tuple (comma-separated)");
+            return;
+        }
+        
+        // Parse input values
+        const values = input.split(',').map(item => {
+            const trimmed = item.trim();
+            // Try to convert to number if possible
+            if (!isNaN(trimmed) && trimmed !== '') {
+                return Number(trimmed);
+            }
+            // Keep as string otherwise (with quotes removed if user entered them)
+            return trimmed.replace(/['"]/g, '');
+        });
+        
+        // Create tuple (in JavaScript we simulate it with Object.freeze on array)
+        currentTuple = Object.freeze([...values]);
+        currentList = [...values]; // Create a mutable list copy
+        
+        // Display the tuple
+        displayTuple();
+        
+        // Log to console
+        logToConsole(`> Created tuple: (${values.join(', ')})`);
+        logToConsole(`> Tuple type: ${typeof currentTuple} (simulated)`);
+        
+        // Reset modification inputs
+        indexInput.value = '';
+        valueInput.value = '';
+        modifyResult.innerHTML = '<p>Result of modification attempt will appear here</p>';
+        listResult.innerHTML = '<p>List modification result will appear here</p>';
+    });
+    
+    // Try to modify the tuple
+    modifyBtn.addEventListener('click', function() {
+        if (!currentTuple) {
+            alert("Please create a tuple first!");
+            return;
+        }
+        
+        const index = parseInt(indexInput.value);
+        const value = valueInput.value.trim();
+        
+        if (isNaN(index) || index < 0 || index >= currentTuple.length) {
+            alert(`Please enter a valid index (0 to ${currentTuple.length - 1})`);
+            return;
+        }
+        
+        if (!value) {
+            alert("Please enter a new value");
+            return;
+        }
+        
+        // Try to modify tuple (will fail)
+        logToConsole(`> Attempting to modify tuple at index ${index} with value "${value}"`);
+        
+        try {
+            // This will fail because the array is frozen
+            currentTuple[index] = value;
+            modifyResult.innerHTML = `
+                <p style="color: #4CAF50;"><i class="fas fa-check-circle"></i> Successfully modified tuple!</p>
+                <p>New tuple: (${currentTuple.join(', ')})</p>
+            `;
+            logToConsole(`> Tuple modified successfully!`);
+        } catch (error) {
+            modifyResult.innerHTML = `
+                <p style="color: #f44336;"><i class="fas fa-exclamation-triangle"></i> TypeError: Cannot modify tuple!</p>
+                <p>Tuples are immutable and cannot be changed after creation.</p>
+                <p>Original tuple is still: (${currentTuple.join(', ')})</p>
+            `;
+            logToConsole(`> TypeError: ${error.message}`);
+            logToConsole(`> Tuples cannot be modified!`);
+        }
+    });
+    
+    // Compare with list
+    listDemoBtn.addEventListener('click', function() {
+        if (!currentList) {
+            alert("Please create a tuple first to compare with a list!");
+            return;
+        }
+        
+        const index = parseInt(indexInput.value);
+        const value = valueInput.value.trim();
+        
+        if (isNaN(index) || index < 0 || index >= currentList.length) {
+            alert(`Please enter a valid index (0 to ${currentList.length - 1})`);
+            return;
+        }
+        
+        if (!value) {
+            alert("Please enter a new value");
+            return;
+        }
+        
+        // Modify the list (will work)
+        logToConsole(`> Attempting to modify list at index ${index} with value "${value}"`);
+        
+        // Convert value to number if it's a numeric string
+        let newValue = value;
+        if (!isNaN(value) && value !== '') {
+            newValue = Number(value);
+        } else {
+            // Remove quotes if user entered them
+            newValue = value.replace(/['"]/g, '');
+        }
+        
+        currentList[index] = newValue;
+        
+        listResult.innerHTML = `
+            <p style="color: #4CAF50;"><i class="fas fa-check-circle"></i> Successfully modified list!</p>
+            <p>New list: [${currentList.join(', ')}]</p>
+            <p>Lists are mutable and can be changed after creation.</p>
+        `;
+        
+        logToConsole(`> List modified successfully! New list: [${currentList.join(', ')}]`);
+        logToConsole(`> Lists can be modified!`);
+    });
+    
+    // Clear console
+    clearConsoleBtn.addEventListener('click', function() {
+        consoleContent.innerHTML = '';
+        logToConsole('> Console cleared');
+        logToConsole('> Tuple Immutability Demonstration');
+    });
+    
+    // Helper functions
+    function displayTuple() {
+        if (!currentTuple) return;
+        
+        tupleDisplay.innerHTML = `
+            <p><strong>Your tuple:</strong> (${currentTuple.map(val => 
+                typeof val === 'string' ? `'${val}'` : val
+            ).join(', ')})</p>
+            <p><strong>Length:</strong> ${currentTuple.length}</p>
+            <p><strong>Type:</strong> tuple (immutable)</p>
+            <p><i class="fas fa-info-circle"></i> Try to modify it using the controls above!</p>
+        `;
+    }
+    
+    function logToConsole(message) {
+        const p = document.createElement('p');
+        p.textContent = message;
+        consoleContent.appendChild(p);
+        consoleContent.scrollTop = consoleContent.scrollHeight;
+    }
+    
+    function initializeDefaultTuple() {
+        // Set default tuple
+        currentTuple = Object.freeze([1920, 1080]);
+        currentList = [1920, 1080];
+        
+        // Set default input values
+        tupleInput.value = "1920, 1080";
+        indexInput.value = "0";
+        valueInput.value = "1280";
+        
+        // Display the default tuple
+        displayTuple();
+    }
+    
+    // Add some initial console content
+    logToConsole('> Welcome to Tuple Immutability Demo!');
+    logToConsole('> Create a tuple and try to modify it to see what happens.');
+});
+    </script>
+</body>
+</html>

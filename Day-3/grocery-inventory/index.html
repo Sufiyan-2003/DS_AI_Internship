@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store Inventory System</title>
+    <style>
+        /* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.content {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.left-panel {
+    flex: 1;
+}
+
+.right-panel {
+    flex: 2;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #4CAF50;
+}
+
+.card h2 {
+    color: #2E7D32;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #388E3C;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #607D8B;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #455A64;
+}
+
+.btn-info {
+    background-color: #2196F3;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #0b7dda;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.instructions {
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.inventory-header span {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #4CAF50;
+}
+
+.search-box {
+    position: relative;
+    width: 300px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.inventory-list-container {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 25px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+}
+
+#inventoryList {
+    list-style-type: none;
+}
+
+#inventoryList li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+#inventoryList li:hover {
+    background-color: #f9f9f9;
+}
+
+#inventoryList li:last-child {
+    border-bottom: none;
+}
+
+.item-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.item-details {
+    display: flex;
+    gap: 20px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.remove-btn {
+    background-color: #ffebee;
+    color: #f44336;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.remove-btn:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.console-output {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.console-output p {
+    margin-bottom: 8px;
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .content {
+        flex-direction: column;
+    }
+    
+    .inventory-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-shopping-cart"></i> Grocery Store Inventory</h1>
+            <p class="subtitle">Manage your grocery inventory with this simple system</p>
+        </header>
+        
+        <div class="content">
+            <div class="left-panel">
+                <div class="card">
+                    <h2><i class="fas fa-plus-circle"></i> Add New Item</h2>
+                    <form id="itemForm">
+                        <div class="form-group">
+                            <label for="itemName">Item Name:</label>
+                            <input type="text" id="itemName" placeholder="Enter item name (e.g., Eggs)" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" placeholder="Enter quantity" min="1" value="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="price">Price ($):</label>
+                            <input type="number" id="price" placeholder="Enter price" min="0" step="0.01" value="1.99">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inStock">In Stock:</label>
+                            <select id="inStock">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add to Inventory
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="card">
+                    <h2><i class="fas fa-cogs"></i> Inventory Actions</h2>
+                    <div class="action-buttons">
+                        <button id="sortBtn" class="btn btn-secondary">
+                            <i class="fas fa-sort-alpha-down"></i> Sort Alphabetically
+                        </button>
+                        <button id="runDemoBtn" class="btn btn-info">
+                            <i class="fas fa-play-circle"></i> Run Demo Scenario
+                        </button>
+                        <button id="clearBtn" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Clear Inventory
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2><i class="fas fa-info-circle"></i> Instructions</h2>
+                    <ol class="instructions">
+                        <li>Create a list named inventory containing: "Apples", "Bananas", "Carrots", "Dates"</li>
+                        <li>A shipment of "Eggs" has arrived. Use .append() to add it</li>
+                        <li>"Bananas" have been sold out. Use .remove() to delete them</li>
+                        <li>Organize the inventory alphabetically using .sort()</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="card">
+                    <h2><i class="fas fa-clipboard-list"></i> Current Inventory</h2>
+                    <div class="inventory-header">
+                        <span>Total Items: <span id="totalItems">4</span></span>
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Search items...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="inventory-list-container">
+                        <ul id="inventoryList">
+                            <!-- Inventory items will be added here dynamically -->
+                        </ul>
+                    </div>
+                    
+                    <div class="inventory-actions">
+                        <h3><i class="fas fa-list-alt"></i> Console Output</h3>
+                        <div id="consoleOutput" class="console-output">
+                            <p>> Initial inventory created.</p>
+                            <p>> Current inventory: Apples, Bananas, Carrots, Dates</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Grocery Inventory System &copy; 2023 | Practice creating lists and using append(), remove(), and sort()</p>
+        </footer>
+    </div>
+    
+    <script>
+        // script.js - Frontend functionality for inventory system
+
+// Initial inventory as per instructions
+let inventory = ["Apples", "Bananas", "Carrots", "Dates"];
+
+// DOM Elements
+const itemForm = document.getElementById('itemForm');
+const inventoryList = document.getElementById('inventoryList');
+const totalItemsSpan = document.getElementById('totalItems');
+const consoleOutput = document.getElementById('consoleOutput');
+const sortBtn = document.getElementById('sortBtn');
+const runDemoBtn = document.getElementById('runDemoBtn');
+const clearBtn = document.getElementById('clearBtn');
+const searchInput = document.getElementById('searchInput');
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+    renderInventory();
+    updateTotalItems();
+    logToConsole("Initial inventory created.");
+    logToConsole(`Current inventory: ${inventory.join(", ")}`);
+});
+
+// Render inventory list
+function renderInventory(filter = '') {
+    inventoryList.innerHTML = '';
+    
+    // Filter inventory if search term is provided
+    const filteredInventory = inventory.filter(item => 
+        item.toLowerCase().includes(filter.toLowerCase())
+    );
+    
+    if (filteredInventory.length === 0) {
+        const emptyItem = document.createElement('li');
+        emptyItem.innerHTML = `<div class="item-name">No items found</div>`;
+        inventoryList.appendChild(emptyItem);
+        return;
+    }
+    
+    filteredInventory.forEach(item => {
+        const li = document.createElement('li');
+        
+        // Create random quantity, price and stock status for demo purposes
+        const quantity = Math.floor(Math.random() * 50) + 1;
+        const price = (Math.random() * 5 + 0.5).toFixed(2);
+        const inStock = Math.random() > 0.3 ? "Yes" : "No";
+        
+        li.innerHTML = `
+            <div class="item-name">${item}</div>
+            <div class="item-details">
+                <span>Qty: ${quantity}</span>
+                <span>Price: $${price}</span>
+                <span>In Stock: ${inStock}</span>
+            </div>
+            <button class="remove-btn" data-item="${item}">
+                <i class="fas fa-times"></i> Remove
+            </button>
+        `;
+        
+        inventoryList.appendChild(li);
+    });
+    
+    // Add event listeners to remove buttons
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const itemToRemove = this.getAttribute('data-item');
+            removeItem(itemToRemove);
+        });
+    });
+}
+
+// Update total items count
+function updateTotalItems() {
+    totalItemsSpan.textContent = inventory.length;
+}
+
+// Log messages to console output
+function logToConsole(message) {
+    const p = document.createElement('p');
+    p.textContent = `> ${message}`;
+    consoleOutput.appendChild(p);
+    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+}
+
+// Add item to inventory
+function addItem(itemName) {
+    if (!itemName) {
+        logToConsole("Error: Item name cannot be empty.");
+        return false;
+    }
+    
+    if (inventory.includes(itemName)) {
+        logToConsole(`Item '${itemName}' already exists in inventory.`);
+        return false;
+    }
+    
+    // Use append() method as per instructions
+    inventory.push(itemName);
+    logToConsole(`Added '${itemName}' to inventory using .append().`);
+    renderInventory();
+    updateTotalItems();
+    return true;
+}
+
+// Remove item from inventory
+function removeItem(itemName) {
+    const index = inventory.indexOf(itemName);
+    if (index === -1) {
+        logToConsole(`Item '${itemName}' not found in inventory.`);
+        return false;
+    }
+    
+    // Use remove() method as per instructions
+    inventory.splice(index, 1);
+    logToConsole(`Removed '${itemName}' from inventory using .remove().`);
+    renderInventory();
+    updateTotalItems();
+    return true;
+}
+
+// Sort inventory alphabetically
+function sortInventory() {
+    // Use sort() method as per instructions
+    inventory.sort();
+    logToConsole("Inventory sorted alphabetically using .sort().");
+    renderInventory();
+}
+
+// Run demo scenario
+function runDemoScenario() {
+    logToConsole("\n=== Running Demo Scenario ===");
+    
+    // Step 1: Show initial inventory
+    logToConsole(`1. Initial inventory: ${inventory.join(", ")}`);
+    
+    // Step 2: Add "Eggs" using append()
+    inventory.push("Eggs");
+    logToConsole(`2. Added 'Eggs': ${inventory.join(", ")}`);
+    
+    // Step 3: Remove "Bananas" using remove()
+    const bananaIndex = inventory.indexOf("Bananas");
+    if (bananaIndex !== -1) {
+        inventory.splice(bananaIndex, 1);
+        logToConsole(`3. Removed 'Bananas': ${inventory.join(", ")}`);
+    } else {
+        logToConsole(`3. 'Bananas' not found in inventory.`);
+    }
+    
+    // Step 4: Sort inventory alphabetically
+    inventory.sort();
+    logToConsole(`4. Sorted inventory: ${inventory.join(", ")}`);
+    
+    logToConsole("=== Demo Scenario Complete ===");
+    
+    renderInventory();
+    updateTotalItems();
+}
+
+// Clear inventory
+function clearInventory() {
+    inventory = [];
+    logToConsole("Inventory cleared.");
+    renderInventory();
+    updateTotalItems();
+}
+
+// Event Listeners
+itemForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const itemName = document.getElementById('itemName').value.trim();
+    const quantity = document.getElementById('quantity').value;
+    const price = document.getElementById('price').value;
+    const inStock = document.getElementById('inStock').value;
+    
+    if (addItem(itemName)) {
+        // Reset form
+        itemForm.reset();
+        document.getElementById('quantity').value = 1;
+        document.getElementById('price').value = 1.99;
+    }
+});
+
+sortBtn.addEventListener('click', sortInventory);
+
+runDemoBtn.addEventListener('click', function() {
+    // Reset to initial inventory for demo
+    inventory = ["Apples", "Bananas", "Carrots", "Dates"];
+    renderInventory();
+    updateTotalItems();
+    runDemoScenario();
+});
+
+clearBtn.addEventListener('click', function() {
+    if (confirm("Are you sure you want to clear the entire inventory?")) {
+        clearInventory();
+    }
+});
+
+searchInput.addEventListener('input', function() {
+    renderInventory(this.value);
+});
+    </script>
+</body>
+</html>

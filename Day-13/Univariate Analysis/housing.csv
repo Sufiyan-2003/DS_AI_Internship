@@ -1,0 +1,501 @@
+City,Area_sqft,BHK,Price
+Jayanagar,3774,4,307.58
+Electronic City,1066,3,126.49
+BTM Layout,930,3,149.29
+Koramangala,730,2,186.61
+BTM Layout,3980,2,296.33
+Malleshwaram,3033,4,277.83
+KR Puram,1555,1,162.37
+Sarjapur Road,2900,4,255.39
+Whitefield,3504,1,225.81
+Rajajinagar,2647,4,258.38
+Koramangala,3347,4,314.84
+Yelahanka,3605,3,253.61
+Jayanagar,2499,3,249.71
+HSR Layout,1246,1,165.86
+Marathahalli,3488,3,234.13
+Yelahanka,3212,2,241.79
+Hebbal,1963,4,197.93
+Koramangala,3156,4,306.18
+Marathahalli,634,2,94.77
+KR Puram,3673,2,254.56
+Yelahanka,3213,2,226.04
+Whitefield,3049,2,233.12
+Hebbal,2179,2,215.93
+Sarjapur Road,1415,3,159.03
+Whitefield,1055,2,122.66
+BTM Layout,937,3,131.02
+Banashankari,1676,4,170.33
+Whitefield,979,1,115.14
+HSR Layout,3712,1,291.42
+Jayanagar,2298,3,248.78
+Rajajinagar,2936,3,259.73
+Malleshwaram,2688,4,253.17
+Rajajinagar,2782,1,229.02
+Sarjapur Road,3719,3,286.95
+KR Puram,3054,2,239.5
+Koramangala,2495,2,255.77
+Marathahalli,2170,1,181.77
+Yelahanka,3290,1,228.69
+Hebbal,1628,2,173.6
+HSR Layout,3442,1,263.66
+HSR Layout,806,3,148.79
+Marathahalli,1463,3,143.49
+Electronic City,3912,4,288.54
+BTM Layout,3132,3,262.41
+Yelahanka,2878,1,194.71
+Indiranagar,3172,4,300.5
+Jayanagar,2322,3,246.11
+Malleshwaram,3293,4,301.23
+Whitefield,1651,4,186.27
+KR Puram,2096,3,186.56
+Banashankari,2837,1,235.35
+Sarjapur Road,3280,4,245.89
+Whitefield,1572,1,144.9
+Marathahalli,2034,1,166.63
+Hebbal,917,1,129.89
+Banashankari,1263,3,167.3
+Jayanagar,2231,4,232.12
+Koramangala,2120,2,260.04
+Electronic City,1163,4,132.96
+KR Puram,3784,1,242.46
+Sarjapur Road,3599,1,255.53
+Whitefield,2359,1,192.11
+HSR Layout,3032,3,264.98
+KR Puram,3377,4,273.6
+Hebbal,2333,4,219.02
+Malleshwaram,3855,3,314.44
+Hebbal,1000,3,153.63
+Hebbal,797,2,153.86
+Whitefield,2530,3,201.59
+Whitefield,2394,4,204.04
+Jayanagar,3411,3,302.73
+Indiranagar,2134,3,232.19
+Electronic City,3819,4,270.23
+Malleshwaram,3519,1,261.25
+HSR Layout,2402,4,226.72
+Rajajinagar,2038,2,218.67
+Yelahanka,3969,3,267.19
+Marathahalli,1223,1,125.93
+Whitefield,1480,2,164.0
+Yelahanka,3662,1,249.62
+Yelahanka,3904,3,278.36
+Malleshwaram,1003,4,179.87
+Marathahalli,2701,4,228.59
+Jayanagar,3783,2,327.04
+Malleshwaram,2096,3,223.37
+Marathahalli,3834,4,257.35
+Koramangala,1556,1,199.5
+Electronic City,2127,4,181.1
+Banashankari,2015,3,186.15
+Yelahanka,3335,4,257.8
+Yelahanka,1554,3,139.51
+Whitefield,2293,2,201.85
+Indiranagar,2877,1,277.96
+Banashankari,2674,2,223.4
+Hebbal,3948,2,311.04
+Rajajinagar,2104,1,221.92
+Malleshwaram,3667,1,321.19
+Hebbal,1815,1,185.44
+BTM Layout,616,4,133.57
+Hebbal,2368,1,220.54
+Malleshwaram,2927,1,261.08
+KR Puram,3770,4,272.77
+Hebbal,1592,4,181.13
+Electronic City,2606,1,175.15
+KR Puram,3927,3,278.49
+Yelahanka,2358,2,175.44
+Banashankari,1169,3,144.61
+Jayanagar,3959,3,324.49
+Sarjapur Road,3501,3,265.63
+Malleshwaram,2009,2,204.02
+Yelahanka,1384,4,160.03
+Electronic City,3847,3,272.89
+Hebbal,2100,2,210.15
+BTM Layout,1520,4,186.14
+Whitefield,1124,4,151.35
+Indiranagar,1284,4,242.73
+Indiranagar,2968,4,297.94
+Koramangala,1571,3,230.06
+Sarjapur Road,3118,3,238.17
+KR Puram,3374,3,246.33
+KR Puram,1453,3,175.8
+Indiranagar,1748,2,198.73
+Electronic City,2961,2,208.33
+Yelahanka,3091,1,230.44
+Koramangala,3640,4,324.85
+Koramangala,604,3,182.0
+Jayanagar,1819,2,211.41
+Jayanagar,646,3,150.78
+Rajajinagar,3470,4,273.25
+Hebbal,1256,4,174.66
+BTM Layout,1430,3,163.57
+Jayanagar,1340,2,185.85
+HSR Layout,716,2,145.85
+Banashankari,1612,1,174.26
+KR Puram,1681,2,154.3
+Sarjapur Road,1741,4,175.52
+Sarjapur Road,1087,1,138.12
+Indiranagar,3437,1,313.36
+Sarjapur Road,2894,3,227.39
+Electronic City,1596,2,132.0
+Rajajinagar,3344,1,269.83
+Hebbal,2865,2,261.97
+Yelahanka,3079,1,206.0
+Electronic City,2357,1,176.8
+Yelahanka,2670,2,218.93
+BTM Layout,3449,4,290.68
+Sarjapur Road,3894,2,280.29
+Rajajinagar,3416,4,314.28
+Malleshwaram,1948,1,205.38
+Indiranagar,1495,4,215.36
+Malleshwaram,1451,4,205.04
+Malleshwaram,2168,1,236.49
+Whitefield,1556,3,167.26
+Malleshwaram,2040,4,238.36
+Koramangala,1666,4,224.47
+Electronic City,3973,2,256.66
+Whitefield,3924,3,265.76
+Yelahanka,689,4,125.62
+Indiranagar,3252,2,281.35
+HSR Layout,714,1,148.52
+Banashankari,3867,2,292.87
+Sarjapur Road,1012,4,160.13
+Sarjapur Road,1328,1,146.91
+Indiranagar,2492,1,254.55
+Malleshwaram,3567,4,319.46
+BTM Layout,2171,2,208.83
+Hebbal,1608,3,195.84
+Jayanagar,636,4,164.09
+Jayanagar,2148,3,228.32
+Hebbal,1896,1,192.42
+Hebbal,2709,4,240.22
+Koramangala,1298,3,219.39
+Marathahalli,2824,4,223.49
+Banashankari,1317,3,154.72
+Electronic City,1450,2,129.32
+Banashankari,3770,4,309.42
+Malleshwaram,3696,4,321.38
+Malleshwaram,3822,4,324.02
+Marathahalli,3216,3,240.68
+Whitefield,3582,2,250.13
+Koramangala,3894,2,344.45
+BTM Layout,834,3,140.23
+KR Puram,3305,3,249.38
+Whitefield,3139,1,226.31
+Rajajinagar,3924,2,308.65
+Hebbal,2817,1,230.78
+Sarjapur Road,3593,3,264.94
+Indiranagar,3836,2,324.12
+Electronic City,2986,4,209.82
+Electronic City,1099,1,100.88
+Indiranagar,1110,3,183.32
+Whitefield,3092,4,242.47
+Electronic City,1805,3,168.83
+BTM Layout,638,2,125.3
+HSR Layout,772,1,153.04
+KR Puram,2283,4,180.0
+Marathahalli,1055,1,128.3
+Sarjapur Road,3034,1,239.03
+Rajajinagar,2995,2,254.26
+Banashankari,1423,1,131.56
+Malleshwaram,1533,1,187.35
+BTM Layout,802,4,154.94
+Hebbal,1852,4,207.34
+KR Puram,2694,1,205.24
+Electronic City,3976,2,254.83
+Banashankari,1070,1,153.76
+BTM Layout,3618,4,277.14
+Malleshwaram,972,4,171.25
+Hebbal,1745,4,185.16
+BTM Layout,3987,2,310.24
+Yelahanka,1139,4,123.69
+Indiranagar,2546,2,249.59
+KR Puram,3606,1,243.85
+Marathahalli,3108,4,224.39
+Jayanagar,3399,1,283.72
+Yelahanka,1308,3,146.89
+Sarjapur Road,2544,2,199.88
+Electronic City,1615,1,142.65
+Malleshwaram,973,1,162.06
+Sarjapur Road,2402,1,199.96
+Koramangala,3953,3,354.19
+Rajajinagar,1288,1,165.65
+Whitefield,2233,1,170.71
+Sarjapur Road,3470,2,252.51
+HSR Layout,1075,1,170.14
+Whitefield,3418,1,248.15
+Koramangala,3694,1,328.94
+Koramangala,682,1,177.23
+Malleshwaram,3756,2,296.23
+Marathahalli,1284,1,126.41
+Marathahalli,2069,1,184.05
+Jayanagar,2742,4,282.51
+Rajajinagar,2174,2,183.92
+KR Puram,1370,3,145.82
+Electronic City,3977,4,268.22
+Whitefield,3566,3,288.69
+Banashankari,1852,1,189.1
+Indiranagar,2750,2,272.75
+Whitefield,1363,2,158.73
+Rajajinagar,3445,3,269.66
+Whitefield,3506,3,257.61
+Jayanagar,765,1,160.43
+Sarjapur Road,3631,3,287.84
+Hebbal,2728,1,217.6
+Whitefield,1396,4,171.92
+Rajajinagar,3432,4,290.16
+HSR Layout,2475,4,240.03
+Electronic City,2073,1,158.84
+Jayanagar,2773,3,245.46
+Malleshwaram,2758,1,257.05
+BTM Layout,3854,4,286.69
+Sarjapur Road,2319,1,200.83
+BTM Layout,3866,4,318.85
+Jayanagar,2569,1,240.26
+Jayanagar,3281,3,280.9
+Electronic City,2028,2,160.81
+KR Puram,3292,1,242.46
+Malleshwaram,2568,2,240.53
+Indiranagar,2353,1,236.4
+HSR Layout,2694,1,231.96
+HSR Layout,2861,3,240.79
+Banashankari,647,1,117.77
+Indiranagar,936,2,178.58
+Banashankari,902,3,140.46
+Jayanagar,655,2,160.44
+KR Puram,2725,4,213.45
+Koramangala,964,2,193.97
+BTM Layout,3397,3,272.96
+BTM Layout,2374,4,222.42
+Rajajinagar,3386,3,274.74
+Sarjapur Road,3686,4,271.74
+KR Puram,1313,3,131.43
+Whitefield,2576,1,197.33
+Electronic City,3459,1,222.13
+Indiranagar,2792,1,281.47
+HSR Layout,666,1,142.12
+BTM Layout,2756,2,233.57
+HSR Layout,2681,3,235.44
+Jayanagar,3395,3,279.52
+Marathahalli,3339,2,230.59
+Banashankari,3991,2,289.44
+Indiranagar,2589,1,238.07
+Yelahanka,1912,1,154.09
+Malleshwaram,3490,2,284.63
+Koramangala,2997,3,296.59
+Indiranagar,674,4,182.78
+Malleshwaram,2470,2,238.41
+Indiranagar,2621,3,270.56
+Koramangala,3221,1,298.91
+Rajajinagar,3697,3,317.68
+Electronic City,2820,4,206.9
+Yelahanka,1131,1,127.94
+Whitefield,2787,3,234.22
+Malleshwaram,2173,1,226.29
+HSR Layout,2517,3,233.87
+Marathahalli,2906,1,220.07
+Malleshwaram,1501,2,210.72
+Electronic City,2273,4,169.2
+Whitefield,3545,1,246.42
+Malleshwaram,1942,1,209.71
+Marathahalli,2976,1,218.08
+Malleshwaram,2638,3,241.66
+Indiranagar,1718,1,215.42
+Banashankari,2569,2,224.89
+Yelahanka,2508,4,212.08
+Whitefield,3991,2,277.66
+HSR Layout,2455,1,226.13
+Hebbal,2917,4,251.73
+Hebbal,3445,3,281.19
+HSR Layout,677,2,134.64
+Marathahalli,3221,4,254.25
+Jayanagar,3049,4,265.38
+Koramangala,2463,3,273.68
+HSR Layout,3069,1,256.41
+HSR Layout,1646,3,176.5
+Jayanagar,1848,3,217.56
+Marathahalli,1102,2,139.02
+Malleshwaram,3710,3,306.46
+Koramangala,797,2,192.0
+BTM Layout,3201,4,256.24
+Yelahanka,3686,3,265.63
+Rajajinagar,1854,3,230.41
+Rajajinagar,1019,1,151.36
+KR Puram,3644,3,253.7
+Koramangala,1550,1,213.22
+Sarjapur Road,1116,3,141.02
+Yelahanka,2465,1,189.12
+Hebbal,1414,4,171.23
+Koramangala,2500,4,275.55
+Marathahalli,3932,1,291.66
+Whitefield,2694,4,234.34
+Malleshwaram,694,3,164.44
+Indiranagar,3402,4,293.78
+Sarjapur Road,2716,4,233.61
+Malleshwaram,610,2,147.21
+KR Puram,1311,3,153.91
+Rajajinagar,1414,2,182.51
+HSR Layout,1584,1,205.64
+Rajajinagar,2239,4,223.19
+Sarjapur Road,3655,4,279.8
+Jayanagar,3804,4,314.17
+HSR Layout,2528,2,244.42
+Yelahanka,650,1,91.23
+Whitefield,3067,2,228.4
+Hebbal,3630,1,264.15
+Malleshwaram,3018,4,264.91
+Sarjapur Road,2534,1,220.67
+Yelahanka,801,4,113.15
+Indiranagar,2960,1,263.85
+Indiranagar,2891,1,272.01
+HSR Layout,2225,3,220.6
+Banashankari,1074,2,151.77
+Whitefield,2994,1,220.27
+BTM Layout,1362,3,168.93
+Sarjapur Road,1805,4,173.31
+KR Puram,2479,1,196.72
+Rajajinagar,2824,1,264.69
+Jayanagar,2803,2,271.42
+Indiranagar,2092,1,226.91
+Indiranagar,3123,3,280.08
+Koramangala,2324,4,291.93
+HSR Layout,3812,2,296.19
+Marathahalli,2862,3,225.08
+Indiranagar,2679,2,262.51
+Banashankari,2932,1,231.27
+Whitefield,3690,2,259.07
+HSR Layout,1368,2,175.75
+BTM Layout,3149,4,280.63
+Indiranagar,1736,2,232.72
+Banashankari,2520,4,225.82
+HSR Layout,3572,3,287.1
+Yelahanka,2081,3,184.33
+Malleshwaram,2501,2,236.43
+Banashankari,2423,2,210.45
+Yelahanka,3679,1,232.72
+Rajajinagar,2606,3,248.71
+Jayanagar,2390,1,217.41
+Rajajinagar,3900,3,320.1
+Malleshwaram,3722,1,313.27
+Jayanagar,2743,4,271.56
+Sarjapur Road,3749,4,284.8
+BTM Layout,1051,4,160.08
+Whitefield,764,2,111.63
+Rajajinagar,1543,2,177.78
+Marathahalli,2654,2,191.0
+Banashankari,1113,1,158.3
+Indiranagar,3462,1,285.68
+BTM Layout,2009,3,192.29
+Whitefield,1070,3,146.06
+Whitefield,1533,4,152.52
+Electronic City,2357,1,160.32
+Yelahanka,2123,2,170.7
+Yelahanka,3501,4,264.77
+HSR Layout,727,4,151.04
+KR Puram,3368,2,264.95
+Indiranagar,3872,2,330.32
+Rajajinagar,1901,3,199.61
+Sarjapur Road,2676,1,211.58
+Marathahalli,3257,3,252.35
+Koramangala,2775,1,279.15
+KR Puram,2689,4,211.85
+Koramangala,2300,1,249.97
+HSR Layout,3645,2,281.64
+Indiranagar,941,1,175.19
+Hebbal,2674,1,237.81
+HSR Layout,1209,4,166.28
+Malleshwaram,2372,1,256.21
+HSR Layout,3569,1,276.29
+Jayanagar,1301,2,166.5
+Whitefield,2445,3,197.35
+BTM Layout,3466,1,248.96
+Malleshwaram,748,3,163.21
+Jayanagar,1919,3,234.36
+KR Puram,3454,4,248.86
+Malleshwaram,1850,2,228.31
+Malleshwaram,1357,2,179.8
+BTM Layout,2716,4,246.88
+KR Puram,3605,3,245.06
+Marathahalli,964,3,139.69
+Jayanagar,2124,1,214.17
+Banashankari,3360,4,267.65
+KR Puram,1538,4,179.61
+Indiranagar,2689,1,266.53
+Malleshwaram,1852,4,211.98
+Electronic City,771,3,114.77
+BTM Layout,2922,1,220.4
+Koramangala,3715,3,330.01
+Hebbal,611,2,136.76
+Electronic City,815,3,118.92
+Malleshwaram,2350,1,233.69
+HSR Layout,3021,4,261.51
+Malleshwaram,1712,4,216.93
+Electronic City,1088,1,111.3
+Banashankari,1639,3,178.11
+HSR Layout,1000,3,147.49
+Koramangala,990,2,215.56
+Indiranagar,934,1,163.51
+Malleshwaram,2121,3,232.21
+KR Puram,1326,1,147.59
+Whitefield,1534,3,160.9
+HSR Layout,1001,3,146.0
+Marathahalli,2835,1,216.76
+Sarjapur Road,1721,3,165.63
+Malleshwaram,782,3,171.88
+KR Puram,963,3,132.28
+HSR Layout,1972,2,184.3
+Hebbal,1520,1,179.68
+Rajajinagar,2049,4,225.28
+KR Puram,3541,2,259.18
+Jayanagar,2514,3,251.17
+Yelahanka,1413,4,150.41
+BTM Layout,871,4,143.0
+Whitefield,2371,3,195.49
+Rajajinagar,939,1,149.94
+Electronic City,3224,2,226.11
+Marathahalli,975,2,122.4
+Whitefield,2633,4,228.32
+Sarjapur Road,1031,1,147.69
+HSR Layout,3596,2,275.27
+Electronic City,2834,2,203.95
+Marathahalli,2428,1,197.03
+Whitefield,1406,4,144.97
+KR Puram,3990,2,282.82
+BTM Layout,2873,1,235.73
+Malleshwaram,3211,4,297.22
+Marathahalli,1989,2,190.66
+BTM Layout,3778,2,279.74
+Koramangala,3153,3,301.61
+Yelahanka,2511,2,200.7
+Koramangala,1326,1,213.24
+HSR Layout,2144,3,223.51
+Whitefield,2514,2,230.24
+HSR Layout,3066,2,260.0
+Yelahanka,602,4,110.07
+Hebbal,1380,4,156.54
+Banashankari,3282,4,255.32
+BTM Layout,1818,1,185.97
+Hebbal,2018,3,203.89
+Banashankari,3897,4,292.5
+Whitefield,1513,2,156.67
+Hebbal,636,4,142.23
+Indiranagar,2762,2,278.4
+Koramangala,1946,4,252.75
+Sarjapur Road,2596,1,229.97
+Banashankari,1912,2,196.62
+BTM Layout,2739,1,227.59
+HSR Layout,3218,3,266.25
+Indiranagar,3204,1,275.7
+Jayanagar,2316,2,238.98
+Jayanagar,1299,3,183.65
+Marathahalli,2780,3,218.58
+Jayanagar,1654,3,213.26
+Marathahalli,1025,2,120.83
+Sarjapur Road,2174,3,205.09
+BTM Layout,2729,4,257.12
+KR Puram,2147,3,190.78
+Malleshwaram,2585,4,251.77
+Koramangala,1856,1,221.85
+BTM Layout,959,3,145.74
+HSR Layout,3114,2,262.6
